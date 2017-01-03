@@ -373,20 +373,19 @@ class upnp_broadcast_responder(object):
 # This example class takes two full URLs that should be requested when an on
 # and off command are invoked respectively. It ignores any return data.
 
-class rest_api_handler(object):
+class mqtt_api_handler(object):
     def __init__(self, on_cmd, off_cmd):
         self.on_cmd = on_cmd
         self.off_cmd = off_cmd
 
     def on(self):
+        print "MQTT ON"
         return True
-        r = requests.get(self.on_cmd)
-        return r.status_code == 200
 
     def off(self):
+        print "MQTT OFF"
         return True
-        r = requests.get(self.off_cmd)
-        return r.status_code == 200
+
 
 
 # Each entry is a list with the following elements:
@@ -400,10 +399,8 @@ class rest_api_handler(object):
 # list will be used.
 
 FAUXMOS = [
-    # ['office lights', rest_api_handler('http://192.168.5.4/ha-api?cmd=on&a=office', 'http://192.168.5.4/ha-api?cmd=off&a=office')],
-    # ['the station', rest_api_handler('http://192.168.5.4/ha-api?cmd=on&a=office', 'http://192.168.5.4/ha-api?cmd=off&a=office')],
-    # ['room lights', rest_api_handler('http://192.168.5.4/ha-api?cmd=on&a=office', 'http://192.168.5.4/ha-api?cmd=off&a=office')],
-    ['kitchen lights', rest_api_handler('http://192.168.5.4/ha-api?cmd=on&a=kitchen', 'http://192.168.5.4/ha-api?cmd=off&a=kitchen')],
+    ['lights', mqtt_api_handler('ON', 'OFF')],
+    ['table light', mqtt_api_handler('ON', 'OFF')],
 ]
 
 
