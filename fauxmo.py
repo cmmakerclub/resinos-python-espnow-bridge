@@ -45,7 +45,7 @@ def on_connect(client, userdata, flags, rc):
 
     # Subscribing in on_connect() means that if we lose the connection and
     # reconnect then subscriptions will be renewed.
-    client.subscribe("CMMC/#")
+    # client.subscribe("CMMC/#")
 
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
@@ -400,9 +400,9 @@ class rest_api_handler(object):
 # list will be used.
 
 FAUXMOS = [
-    ['office lights', rest_api_handler('http://192.168.5.4/ha-api?cmd=on&a=office', 'http://192.168.5.4/ha-api?cmd=off&a=office')],
-    ['the station', rest_api_handler('http://192.168.5.4/ha-api?cmd=on&a=office', 'http://192.168.5.4/ha-api?cmd=off&a=office')],
-    ['room lights', rest_api_handler('http://192.168.5.4/ha-api?cmd=on&a=office', 'http://192.168.5.4/ha-api?cmd=off&a=office')],
+    # ['office lights', rest_api_handler('http://192.168.5.4/ha-api?cmd=on&a=office', 'http://192.168.5.4/ha-api?cmd=off&a=office')],
+    # ['the station', rest_api_handler('http://192.168.5.4/ha-api?cmd=on&a=office', 'http://192.168.5.4/ha-api?cmd=off&a=office')],
+    # ['room lights', rest_api_handler('http://192.168.5.4/ha-api?cmd=on&a=office', 'http://192.168.5.4/ha-api?cmd=off&a=office')],
     ['kitchen lights', rest_api_handler('http://192.168.5.4/ha-api?cmd=on&a=kitchen', 'http://192.168.5.4/ha-api?cmd=off&a=kitchen')],
 ]
 
