@@ -17,4 +17,4 @@ COPY . ./
 ENV INITSYSTEM on
 
 # main.py will run when container starts up on the device
-CMD ["python","src/main.py"]
+CMD ["python","src/app/fauxmo.py"]
