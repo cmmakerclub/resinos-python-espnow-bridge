@@ -405,7 +405,7 @@ class mqtt_api_handler(object):
 
 FAUXMOS = [
     ['fan', mqtt_api_handler('fan', 'ON', 'OFF')],
-    # ['table light', mqtt_api_handler('table light', 'ON', 'OFF')],
+    ['table light', mqtt_api_handler('table light', 'ON', 'OFF')],
 ]
 
 
