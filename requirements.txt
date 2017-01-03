@@ -1,2 +1,3 @@
 paho-mqtt==1.2
+pprint==0.1
 requests==2.12.4
