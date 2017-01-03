@@ -38,6 +38,7 @@ import uuid
 
 
 import paho.mqtt.client as mqtt
+from pprint import pprint
 
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
@@ -374,15 +375,19 @@ class upnp_broadcast_responder(object):
 # and off command are invoked respectively. It ignores any return data.
 
 class mqtt_api_handler(object):
-    def __init__(self, on_cmd, off_cmd):
+    def __init__(self, device, on_cmd, off_cmd):
         self.on_cmd = on_cmd
         self.off_cmd = off_cmd
+        self.name = device
+        pprint(vars(self), indent=2)
 
     def on(self):
         print "MQTT ON"
+        client.publish("CMMC/androidthings001/$/command", self.on_cmd)
         return True
 
     def off(self):
+        client.publish("CMMC/androidthings001/$/command", self.off_cmd)
         print "MQTT OFF"
         return True
 
@@ -399,8 +404,8 @@ class mqtt_api_handler(object):
 # list will be used.
 
 FAUXMOS = [
-    ['lights', mqtt_api_handler('ON', 'OFF')],
-    ['table light', mqtt_api_handler('ON', 'OFF')],
+    ['fan', mqtt_api_handler('fan', 'ON', 'OFF')],
+    # ['table light', mqtt_api_handler('table light', 'ON', 'OFF')],
 ]
 
 
