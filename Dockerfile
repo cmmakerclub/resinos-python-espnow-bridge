@@ -9,11 +9,11 @@ COPY ./requirements.txt /requirements.txt
 
 RUN pip install -r /requirements.txt
 
-COPY . ./
-ADD fauxmo.py /usr/src/app
-
 # switch on systemd init system in container
 ENV INITSYSTEM on
+
+COPY . ./
+ADD fauxmo.py /usr/src/app
 
 # main.py will run when container starts up on the device
 CMD ["python","/usr/src/app/fauxmo.py"]
