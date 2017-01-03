@@ -12,6 +12,7 @@ RUN pip install -r /requirements.txt
 
 # This will copy all files in our root to the working  directory in the container
 COPY . ./
+COPY . ./
 
 # switch on systemd init system in container
 ENV INITSYSTEM on
