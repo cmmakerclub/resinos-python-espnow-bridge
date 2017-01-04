@@ -385,11 +385,13 @@ class mqtt_api_handler(object):
         print "MQTT ON"
         client.publish("CMMC/androidthings001/$/command", self.on_cmd)
         client.publish("/CMMC/14367844/command", self.on_cmd)
+        client.publish("CMMC/14367844/command", self.on_cmd)
         return True
 
     def off(self):
         client.publish("CMMC/androidthings001/$/command", self.off_cmd)
         client.publish("/CMMC/14367844/command", self.off_cmd)
+        client.publish("CMMC/14367844/command", self.off_cmd)
         print "MQTT OFF"
         return True
 
