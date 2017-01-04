@@ -384,10 +384,12 @@ class mqtt_api_handler(object):
     def on(self):
         print "MQTT ON"
         client.publish("CMMC/androidthings001/$/command", self.on_cmd)
+        client.publish("/CMMC/14367844/command", self.on_cmd)
         return True
 
     def off(self):
         client.publish("CMMC/androidthings001/$/command", self.off_cmd)
+        client.publish("/CMMC/14367844/command", self.off_cmd)
         print "MQTT OFF"
         return True
 
@@ -406,6 +408,7 @@ class mqtt_api_handler(object):
 FAUXMOS = [
     ['fan', mqtt_api_handler('fan', 'ON', 'OFF')],
     ['table light', mqtt_api_handler('table light', 'ON', 'OFF')],
+    ['lights', mqtt_api_handler('lights', 'ON', 'OFF')],
 ]
 
 
