@@ -42,7 +42,7 @@ def readline(a_serial, eol=b'\r\n'):
     line = bytearray()
     while True:
         c = a_serial.read(1)
-        print c
+        # print c
         if c:
             line += c
             if line[-leneol:] == eol:
@@ -59,20 +59,20 @@ while True:
     try:
         line = readline(ser)
         line_str = bytes(line)
-        # line_hex = str2hexstr(line_str)
-        # print "len = %d" % len(line_str)
-        # b_header = line[0:2]
-        # b_mac1 = line[2:8]
-        # b_mac2 = line[8:14]
-        # msglen = line[14]
-        # msg = line[15:15+msglen]
-        # print str2hexstr(bytes(b_header))
-        # print str2hexstr()
-        # print msglen
-        # print str2hexstr(bytes(msg))
+        line_hex = str2hexstr(line_str)
+        print "len = %d" % len(line_str)
+        b_header = line[0:2]
+        b_mac1 = line[2:8]
+        b_mac2 = line[8:14]
+        msglen = line[14]
+        msg = line[15:15+msglen]
+        print str2hexstr(bytes(b_header))
+        print str2hexstr()
+        print msglen
+        print str2hexstr(bytes(msg))
         print line_str
         print str2hexstr(line_str)
-        # (rc, mid) = client.publish("CMMC/nat", line[:-2], qos=1)
+        (rc, mid) = client.publish("CMMC/nat/espnow", line[:-2], qos=1)
     except Exception as e:
         print e
     except KeyboardInterrupt:
