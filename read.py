@@ -12,8 +12,8 @@ def on_publish(client, userdata, mid):
 
 client = paho.Client()
 client.on_publish = on_publish
-# client.connect("mqtt.cmmc.io", 1883)
-# client.loop_start()
+client.connect("mqtt.cmmc.io", 1883)
+client.loop_start()
 
 device = None
 baud = 9600
@@ -42,6 +42,7 @@ def readline(a_serial, eol=b'\r\n'):
     line = bytearray()
     while True:
         c = a_serial.read(1)
+        print c
         if c:
             line += c
             if line[-leneol:] == eol:
