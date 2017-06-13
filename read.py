@@ -12,8 +12,8 @@ def on_publish(client, userdata, mid):
 
 client = paho.Client()
 client.on_publish = on_publish
-client.connect("mqtt.cmmc.io", 1883)
-client.loop_start()
+# client.connect("mqtt.cmmc.io", 1883)
+# client.loop_start()
 
 device = None
 baud = 9600
@@ -53,6 +53,7 @@ def readline(a_serial, eol=b'\r\n'):
 def str2hexstr(line):
   return " ".join(hex(ord(n)) for n in line)
 
+print "reading..."
 while True:
     try:
         line = readline(ser)
@@ -68,8 +69,8 @@ while True:
         # print str2hexstr()
         # print msglen
         # print str2hexstr(bytes(msg))
-        print str2hexstr(line_str)
         print line_str
+        print str2hexstr(line_str)
         # (rc, mid) = client.publish("CMMC/nat", line[:-2], qos=1)
     except Exception as e:
         print e
