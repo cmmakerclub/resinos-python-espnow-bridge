@@ -13,7 +13,7 @@ RUN pip install -r /requirements.txt
 ENV INITSYSTEM on
 
 COPY . ./
-ADD fauxmo.py /usr/src/app
+ADD read.py /usr/src/app
 
 # main.py will run when container starts up on the device
-CMD ["python","/usr/src/app/fauxmo.py"]
+CMD ["python","/usr/src/app/read.py"]

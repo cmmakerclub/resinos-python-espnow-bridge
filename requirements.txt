@@ -1,3 +1,6 @@
-paho-mqtt==1.2
-pprint==0.1
-requests==2.12.4
+appdirs==1.4.3
+packaging==16.8
+paho-mqtt==1.2.3
+pyparsing==2.2.0
+pyserial==3.3
+six==1.10.0
