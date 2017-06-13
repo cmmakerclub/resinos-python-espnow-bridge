@@ -8,6 +8,7 @@ import time
 def on_publish(client, userdata, mid):
     print("on_publish")
     print("mid: "+str(mid))
+    print userdata
     pass
 
 client = paho.Client()
