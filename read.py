@@ -6,8 +6,8 @@ import time
 #sys.setdefaultencoding('utf8')
 
 def on_publish(client, userdata, mid):
-    #print("on_publish")
-    #print("mid: "+str(mid))
+    print("on_publish")
+    print("mid: "+str(mid))
     pass
 
 client = paho.Client()
