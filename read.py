@@ -74,6 +74,7 @@ while True:
         # print line_str
         print str2hexstr(line_str)
         (rc, mid) = client.publish("CMMC/nat/espnow", line, qos=1)
+        (rc, mid) = client.publish("CMMC/nat2/espnow", line, qos=1)
     except Exception as e:
         print e
     except KeyboardInterrupt:
