@@ -10,7 +10,7 @@ MQTT = {
         'USER': os.environ.get('MQTT_USER', ''),
         'PASSWORD': os.environ.get('MQTT_PASSWORD', ''),
         'HOST': os.environ.get('MQTT_HOST', 'mqtt.cmmc.io'),
-        'PORT': os.environ.get('MQTT_PORT', 1883),
+        'port': os.environ.get('MQTT_PORT', 1883),
         'TOPIC_1': os.environ.get('MQTT_TOPIC_1', 'CMMC/nat1/espnow'),
         'TOPIC_2': os.environ.get('MQTT_TOPIC_2', 'CMMC/nat1/espnow'),
     }
@@ -85,8 +85,8 @@ while True:
         # print str2hexstr(bytes(msg))
         # print line_str
         print str2hexstr(line_str)
-        (rc, mid) = client.publish(MQTT.default.MQTT_TOPIC_1, line, qos=0)
-        (rc, mid) = client.publish(MQTT.default.MQTT_TOPIC_2, line, qos=1)
+        (rc, mid) = client.publish(MQTT['default']['MQTT_TOPIC_1'], line, qos=0)
+        (rc, mid) = client.publish(MQTT['default']['MQTT_TOPIC_2'], line, qos=0)
     except Exception as e:
         print e
     except KeyboardInterrupt:
