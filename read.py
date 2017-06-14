@@ -25,7 +25,7 @@ def on_publish(client, userdata, mid):
 
 client = paho.Client()
 client.on_publish = on_publish
-client.connect(MQTT['default'].HOST, MQTT.default.PORT)
+client.connect(MQTT['default']['HOST'], MQTT['default']['PORT'])
 client.loop_start()
 
 device = None
