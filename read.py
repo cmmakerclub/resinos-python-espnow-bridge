@@ -25,7 +25,7 @@ def on_publish(client, userdata, mid):
 
 client = paho.Client()
 client.on_publish = on_publish
-client.connect(MQTT['default']['HOST'], MQTT['default']['port'])
+client.connect(MQTT.default.HOST, MQTT.default.PORT)
 client.loop_start()
 
 device = None
@@ -86,7 +86,7 @@ while True:
         # print line_str
         print str2hexstr(line_str)
         (rc, mid) = client.publish(MQTT.default.MQTT_TOPIC_1, line, qos=0)
-        (rc, mid) = client.publish(MQTT.default.MQTT_TOPIC_2, line, qos=0)
+        (rc, mid) = client.publish(MQTT.default.MQTT_TOPIC_2, line, qos=1)
     except Exception as e:
         print e
     except KeyboardInterrupt:
