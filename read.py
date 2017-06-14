@@ -10,7 +10,7 @@ MQTT = {
         'USER': os.environ.get('MQTT_USER', ''),
         'PASSWORD': os.environ.get('MQTT_PASSWORD', ''),
         'HOST': os.environ.get('MQTT_HOST', 'mqtt.cmmc.io'),
-        'port': os.environ.get('MQTT_PORT', 1883),
+        'PORT': os.environ.get('MQTT_PORT', 1883),
         'TOPIC_1': os.environ.get('MQTT_TOPIC_1', 'CMMC/nat1/espnow'),
         'TOPIC_2': os.environ.get('MQTT_TOPIC_2', 'CMMC/nat1/espnow'),
     }
