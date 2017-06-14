@@ -87,7 +87,7 @@ while True:
         print 'topic1 = %s' %MQTT['default']['TOPIC_1']
         print 'topic2 = %s' %MQTT['default']['TOPIC_2']
         (rc, mid) = client.publish(MQTT['default']['TOPIC_1'], line, qos=0)
-        (rc, mid) = client.publish(MQTT['default']['TOPIC_2'], line, qos=0)
+        # (rc, mid) = client.publish(MQTT['default']['TOPIC_2'], line, qos=0)
     except Exception as e:
         print e
     except KeyboardInterrupt:
