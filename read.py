@@ -1,9 +1,21 @@
-import serial, sys, time, commands, re
+import serial, sys, time, commands, re, os
 import logging
 import paho.mqtt.client as paho
 import time
 #reload(sys)
 #sys.setdefaultencoding('utf8')
+MQTT = {
+    'default': {
+        'NAME': os.environ.get('MQTT_NAME', ''),
+        'USER': os.environ.get('MQTT_USER', ''),
+        'PASSWORD': os.environ.get('MQTT_PASSWORD', ''),
+        'HOST': os.environ.get('MQTT_HOST', 'mqtt.cmmc.io'),
+        'PORT': os.environ.get('MQTT_PORT', 1883),
+        'TOPIC_1': os.environ.get('MQTT_TOPIC_1', 'CMMC/nat1/espnow'),
+        'TOPIC_2': os.environ.get('MQTT_TOPIC_2', 'CMMC/nat1/espnow'),
+    }
+}
+
 
 def on_publish(client, userdata, mid):
     print("on_publish")
@@ -13,7 +25,7 @@ def on_publish(client, userdata, mid):
 
 client = paho.Client()
 client.on_publish = on_publish
-client.connect("mqtt.cmmc.io", 1883)
+client.connect(MQTT.default.HOST, MQTT.default.port)
 client.loop_start()
 
 device = None
@@ -73,8 +85,8 @@ while True:
         # print str2hexstr(bytes(msg))
         # print line_str
         print str2hexstr(line_str)
-        (rc, mid) = client.publish("CMMC/nat/espnow", line, qos=1)
-        (rc, mid) = client.publish("CMMC/nat2/espnow", line, qos=1)
+        (rc, mid) = client.publish(MQTT.default.MQTT_TOPIC_1, line, qos=0)
+        (rc, mid) = client.publish(MQTT.default.MQTT_TOPIC_2, line, qos=0)
     except Exception as e:
         print e
     except KeyboardInterrupt:
