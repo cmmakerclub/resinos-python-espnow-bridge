@@ -72,22 +72,10 @@ while True:
         line = readline(ser)
         line_str = bytes(line)
         line_hex = str2hexstr(line_str)
-        # print "len = %d" % len(line_str)
-        # b_header = line[0:2]
-        # b_mac1 = line[2:8]
-        # b_mac2 = line[8:14]
-        # msglen = line[14]
-        # msg = line[15:15+msglen]
-        # print str2hexstr(bytes(b_header))
-        # print str2hexstr()
-        # print msglen
-        # print str2hexstr(bytes(msg))
-        # print line_str
         print str2hexstr(line_str)
         print 'topic1 = %s' %MQTT['default']['TOPIC_1']
         print 'topic2 = %s' %MQTT['default']['TOPIC_2']
         (rc, mid) = client.publish(MQTT['default']['TOPIC_1'], line, qos=0)
-        # (rc, mid) = client.publish(MQTT['default']['TOPIC_2'], line, qos=0)
     except Exception as e:
         print e
     except KeyboardInterrupt:
